@@ -6,13 +6,13 @@ _Speachy_ helps you connect your application entities and their pages to your us
 
 ## How does the user interact
 
-Example request:
+_Example request:_
 
 Double press the button **S** on your keyboard
 
 `Open a user with id 45`
 
-Example response: 
+_Example response:_ 
 
 ```javascript
 { 
