@@ -38,6 +38,8 @@ In case of a wrong pronunciation, you would just get
 
 ## Usage
 
+Setup is easy! Its just 4 easy steps
+
 1. Include `speechy.js` as a dependency (whichever way you want)
 2. Set the *verbs*, *noun* and *attributes* you want to detect:
 
@@ -64,7 +66,15 @@ var attributes = [
 var cancelPhrase = 'stop';
 ```
 
-3. Initialize Speechy with the constructs:
+3. Set the **required** handler for the construct before initializing Speechy
+
+```javascript
+Speechy.onConstructParsed = function (construct){
+  console.log(construct); // do whatever you like with the received construct
+};
+```
+
+4. Initialize Speechy with the constructs:
 
 `Speechy.init(verbs, nouns, attributes, cancelPhrase);`
 
