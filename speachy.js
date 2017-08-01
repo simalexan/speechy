@@ -27,7 +27,7 @@ var Speachy = (function Speachy(){
         throw 'You need a list of attribute objects { name: \'\', value: \'\'} for Speachy to work';
       }
 
-      if (cancelPhrase && cancelPhrase.length && cancelPhrase.length > 2) Speachy.cancelPhrase = cancelPhrase;
+      if (typeof cancelPhrase === 'string' && cancelPhrase.length > 2) Speachy.cancelPhrase = cancelPhrase;
 
       Speachy.verbs = verbs;
       Speachy.nouns = nouns;
