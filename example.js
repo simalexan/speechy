@@ -19,4 +19,8 @@ var attributes = [
 
 var cancelPhrase = 'stop';
 
+Speechy.onConstructParsed = function (construct){
+  console.log(construct);
+};
+
 Speechy.init(verbs, entities, attributes, cancelPhrase);

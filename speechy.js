@@ -12,6 +12,8 @@ var Speechy = (function Speechy(){
   Speechy.nouns = [];
   Speechy.attributes = [];
 
+  Speechy.onConstructParsed;
+
   Speechy.init = function (verbs, nouns, attributes, cancelPhrase){
     if (!('webkitSpeechRecognition' in window)) {
       throw 'no speech recognition in this browser';
@@ -25,6 +27,10 @@ var Speechy = (function Speechy(){
       }
       if (!Array.isArray(attributes)) {
         throw 'You need a list of attribute objects { name: \'\', value: \'\'} for Speechy to work';
+      }
+
+      if (typeof Speechy.onConstructParsed !== 'function') {
+        throw 'You need to set a parsed speech handler function for Speechy to work';
       }
 
       if (typeof cancelPhrase === 'string' && cancelPhrase.length > 2) Speechy.cancelPhrase = cancelPhrase;
@@ -90,7 +96,8 @@ var Speechy = (function Speechy(){
             if (finalTranscript.indexOf(Speechy.cancelPhrase) != -1) {
               finalTranscript = '';
             } else {
-              console.log(checkToConstruct(finalTranscript));
+              var parsedSpeech = parseConstruct(finalTranscript);
+              Speechy.onConstructParsed(parsedSpeech);
             }
           } else {
             console.log('interim')
@@ -120,7 +127,7 @@ var Speechy = (function Speechy(){
     hasButtonTappedOnce = false;
   };
 
-  function checkToConstruct(sentence) {
+  function parseConstruct(sentence) {
     var constructResult = { isConstructed: false };
     for (var i = 0; i < Speechy.verbs.length; i++){
       if (sentence.toLowerCase().indexOf(Speechy.verbs[i]) !== -1) {
@@ -147,7 +154,6 @@ var Speechy = (function Speechy(){
     if (constructResult.attribute && constructResult.attribute.type) {
       var regexNumbers = /\d+/;
       var foundAttributeValue = sentence.match(regexNumbers);
-      console.log(foundAttributeValue);
       if (foundAttributeValue.length && foundAttributeValue.length > 0) constructResult.attribute.value = foundAttributeValue[0];
     }
 
