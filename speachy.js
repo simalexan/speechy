@@ -9,10 +9,10 @@ var Speachy = (function Speachy(){
 
   Speachy.cancelPhrase = 'cancel';
   Speachy.verbs = [];
-  Speachy.entities = [];
+  Speachy.nouns = [];
   Speachy.attributes = [];
 
-  Speachy.init = function (verbs, entities, attributes, cancelPhrase){
+  Speachy.init = function (verbs, nouns, attributes, cancelPhrase){
     if (!('webkitSpeechRecognition' in window)) {
       throw 'no speech recognition in this browser';
     } else {
@@ -20,8 +20,8 @@ var Speachy = (function Speachy(){
       if (!verbs && verbs.length && verbs.length < 1) {
         throw 'You need a list of verb strings for Speachy to work';
       }
-      if (!entities && entities.length && entities.length < 1) {
-        throw 'You need a list of entities strings for Speachy to work';
+      if (!nouns && nouns.length && nouns.length < 1) {
+        throw 'You need a list of nouns strings for Speachy to work';
       }
       if (!attributes && attributes.length && attributes.length < 1) {
         throw 'You need a list of attribute objects { name: \'\', value: \'\'} for Speachy to work';
@@ -30,7 +30,7 @@ var Speachy = (function Speachy(){
       if (cancelPhrase && cancelPhrase.length && cancelPhrase.length > 2) Speachy.cancelPhrase = cancelPhrase;
 
       Speachy.verbs = verbs;
-      Speachy.entities = entities;
+      Speachy.nouns = nouns;
       Speachy.attributes = attributes;
 
       recognition = new webkitSpeechRecognition();
@@ -130,10 +130,10 @@ var Speachy = (function Speachy(){
       }
     }
 
-    for (var i = 0; i < Speachy.entities.length; i++){
-      if (sentence.toLowerCase().indexOf(Speachy.entities[i]) !== -1) {
+    for (var i = 0; i < Speachy.nouns.length; i++){
+      if (sentence.toLowerCase().indexOf(Speachy.nouns[i]) !== -1) {
         entityPos = i;
-        constructResult.entity = Speachy.entities[i];
+        constructResult.noun = Speachy.nouns[i];
       }
     }
 
