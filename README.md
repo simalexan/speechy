@@ -37,3 +37,35 @@ In case of a wrong pronunciation, you would just get
 ```
 
 ## Usage
+
+1. Include `speachy.js` as a dependency (whichever way you want)
+2. Set the *verbs*, *noun* and *attributes* you want to detect:
+
+```javascript
+var verbs = [
+  'open',
+  'get',
+  'show',
+  'give',
+  'want',
+  'need'
+];
+
+var nouns = [
+  'user',
+  'product'
+];
+
+var attributes = [
+  { name: 'id', type: 'number' },
+  { name: 'list' }
+];
+
+var cancelPhrase = 'stop';
+```
+
+3. Initialize Speachy with the constructs:
+
+`Speachy.init(verbs, nouns, attributes, cancelPhrase);`
+
+Double press S and voila!
