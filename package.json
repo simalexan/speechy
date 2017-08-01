@@ -1,14 +1,14 @@
 {
-  "name": "speachy",
+  "name": "speechy",
   "version": "1.0.0",
   "description": "Easy web speech for your frontend application in Minority Report style",
-  "main": "speachy.js",
+  "main": "speechy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simalexan/speachy.git"
+    "url": "git+https://github.com/simalexan/speechy.git"
   },
   "keywords": [
     "speech",
@@ -21,7 +21,7 @@
   "author": "Alexander Simovic <alexander.simovic@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/simalexan/speachy/issues"
+    "url": "https://github.com/simalexan/speechy/issues"
   },
-  "homepage": "https://github.com/simalexan/speachy#readme"
+  "homepage": "https://github.com/simalexan/speechy#readme"
 }

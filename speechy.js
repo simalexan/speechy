@@ -1,37 +1,37 @@
-var Speachy = (function Speachy(){
+var Speechy = (function Speechy(){
 
-  var Speachy = {},
+  var Speechy = {},
     recognition,
     recognizing = false,
     hasButtonTappedOnce = false,
     finalTranscript = '', interimTranscript = '';
 
 
-  Speachy.cancelPhrase = 'cancel';
-  Speachy.verbs = [];
-  Speachy.nouns = [];
-  Speachy.attributes = [];
+  Speechy.cancelPhrase = 'cancel';
+  Speechy.verbs = [];
+  Speechy.nouns = [];
+  Speechy.attributes = [];
 
-  Speachy.init = function (verbs, nouns, attributes, cancelPhrase){
+  Speechy.init = function (verbs, nouns, attributes, cancelPhrase){
     if (!('webkitSpeechRecognition' in window)) {
       throw 'no speech recognition in this browser';
     } else {
 
       if (!Array.isArray(verbs) || typeof verbs[0] !== 'string') {
-        throw 'You need a list of verb strings for Speachy to work';
+        throw 'You need a list of verb strings for Speechy to work';
       }
       if (!Array.isArray(nouns) || typeof nouns[0] !== 'string') {
-        throw 'You need a list of nouns strings for Speachy to work';
+        throw 'You need a list of nouns strings for Speechy to work';
       }
       if (!Array.isArray(attributes)) {
-        throw 'You need a list of attribute objects { name: \'\', value: \'\'} for Speachy to work';
+        throw 'You need a list of attribute objects { name: \'\', value: \'\'} for Speechy to work';
       }
 
-      if (typeof cancelPhrase === 'string' && cancelPhrase.length > 2) Speachy.cancelPhrase = cancelPhrase;
+      if (typeof cancelPhrase === 'string' && cancelPhrase.length > 2) Speechy.cancelPhrase = cancelPhrase;
 
-      Speachy.verbs = verbs;
-      Speachy.nouns = nouns;
-      Speachy.attributes = attributes;
+      Speechy.verbs = verbs;
+      Speechy.nouns = nouns;
+      Speechy.attributes = attributes;
 
       recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
@@ -46,7 +46,7 @@ var Speachy = (function Speachy(){
             hasButtonTappedOnce = true;
             return;
           }
-          Speachy.startRecognizing(e);
+          Speechy.startRecognizing(e);
         }
       }, true);
 
@@ -87,7 +87,7 @@ var Speachy = (function Speachy(){
           if (event.results[i].isFinal) {
             console.log('final')
             finalTranscript += event.results[i][0].transcript;
-            if (finalTranscript.indexOf(Speachy.cancelPhrase) != -1) {
+            if (finalTranscript.indexOf(Speechy.cancelPhrase) != -1) {
               finalTranscript = '';
             } else {
               console.log(checkToConstruct(finalTranscript));
@@ -95,7 +95,7 @@ var Speachy = (function Speachy(){
           } else {
             console.log('interim')
             interimTranscript += event.results[i][0].transcript;
-            if (interimTranscript.indexOf(Speachy.cancelPhrase) != -1) {
+            if (interimTranscript.indexOf(Speechy.cancelPhrase) != -1) {
               interimTranscript = '';
             }
           }
@@ -104,7 +104,7 @@ var Speachy = (function Speachy(){
     }
   };
 
-  Speachy.startRecognizing = function (event){
+  Speechy.startRecognizing = function (event){
     if (recognizing) {
       console.log('SHUTTING RECOGNITION')
       recognition.stop();
@@ -122,23 +122,23 @@ var Speachy = (function Speachy(){
 
   function checkToConstruct(sentence) {
     var constructResult = { isConstructed: false };
-    for (var i = 0; i < Speachy.verbs.length; i++){
-      if (sentence.toLowerCase().indexOf(Speachy.verbs[i]) !== -1) {
-        constructResult.verb = Speachy.verbs[i];
+    for (var i = 0; i < Speechy.verbs.length; i++){
+      if (sentence.toLowerCase().indexOf(Speechy.verbs[i]) !== -1) {
+        constructResult.verb = Speechy.verbs[i];
         break;
       }
     }
 
-    for (var i = 0; i < Speachy.nouns.length; i++){
-      if (sentence.toLowerCase().indexOf(Speachy.nouns[i]) !== -1) {
-        constructResult.noun = Speachy.nouns[i];
+    for (var i = 0; i < Speechy.nouns.length; i++){
+      if (sentence.toLowerCase().indexOf(Speechy.nouns[i]) !== -1) {
+        constructResult.noun = Speechy.nouns[i];
         break;
       }
     }
 
-    for (var i = 0; i < Speachy.attributes.length; i++){
-      if (sentence.toLowerCase().indexOf(Speachy.attributes[i].name) !== -1) {
-        constructResult.attribute = Speachy.attributes[i];
+    for (var i = 0; i < Speechy.attributes.length; i++){
+      if (sentence.toLowerCase().indexOf(Speechy.attributes[i].name) !== -1) {
+        constructResult.attribute = Speechy.attributes[i];
       }
     }
 
@@ -157,5 +157,5 @@ var Speachy = (function Speachy(){
   }
 
 
-  return Speachy;
+  return Speechy;
 })();

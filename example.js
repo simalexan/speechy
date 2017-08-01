@@ -19,4 +19,4 @@ var attributes = [
 
 var cancelPhrase = 'stop';
 
-Speachy.init(verbs, entities, attributes, cancelPhrase);
+Speechy.init(verbs, entities, attributes, cancelPhrase);
