@@ -1,8 +1,8 @@
-# Speachy
+# Speechy
 
-What does Speachy mean? - https://www.youtube.com/watch?v=uo2wWB7cYk4
+What does Speechy mean? - https://www.youtube.com/watch?v=uo2wWB7cYk4
 
-_Speachy_ helps you connect your application entities and their pages to your users voice. It simplifies the recognition workflows, as it focuses you on basic sentence constructs - **verbs**, **nouns** and **attributes**. Using sentence constructs, you can easily lead the user to the wanted page, product or even product list without typing and clicking -- in Minority Report style.
+_Speechy_ helps you connect your application entities and their pages to your users voice. It simplifies the recognition workflows, as it focuses you on basic sentence constructs - **verbs**, **nouns** and **attributes**. Using sentence constructs, you can easily lead the user to the wanted page, product or even product list without typing and clicking -- in Minority Report style.
 
 ## How does the user interact
 
@@ -38,7 +38,7 @@ In case of a wrong pronunciation, you would just get
 
 ## Usage
 
-1. Include `speachy.js` as a dependency (whichever way you want)
+1. Include `speechy.js` as a dependency (whichever way you want)
 2. Set the *verbs*, *noun* and *attributes* you want to detect:
 
 ```javascript
@@ -64,8 +64,8 @@ var attributes = [
 var cancelPhrase = 'stop';
 ```
 
-3. Initialize Speachy with the constructs:
+3. Initialize Speechy with the constructs:
 
-`Speachy.init(verbs, nouns, attributes, cancelPhrase);`
+`Speechy.init(verbs, nouns, attributes, cancelPhrase);`
 
 Double press S and voila!
