@@ -22,3 +22,10 @@ Example response:
   isConstructed: true
 }
 ```
+
+In case of a wrong pronunciation, you would just get
+```javascript
+{ 
+  isConstructed: false
+}
+```
