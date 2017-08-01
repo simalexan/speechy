@@ -17,13 +17,13 @@ var Speachy = (function Speachy(){
       throw 'no speech recognition in this browser';
     } else {
 
-      if (!verbs && verbs.length && verbs.length < 1) {
+      if (!Array.isArray(verbs) || typeof verbs[0] !== 'string') {
         throw 'You need a list of verb strings for Speachy to work';
       }
-      if (!nouns && nouns.length && nouns.length < 1) {
+      if (!Array.isArray(nouns) || typeof nouns[0] !== 'string') {
         throw 'You need a list of nouns strings for Speachy to work';
       }
-      if (!attributes && attributes.length && attributes.length < 1) {
+      if (!Array.isArray(attributes)) {
         throw 'You need a list of attribute objects { name: \'\', value: \'\'} for Speachy to work';
       }
 
@@ -121,32 +121,30 @@ var Speachy = (function Speachy(){
   };
 
   function checkToConstruct(sentence) {
-    var startVerbPos = -1, entityPos = -1, attributePos = -1, attributeVal = '';
     var constructResult = { isConstructed: false };
     for (var i = 0; i < Speachy.verbs.length; i++){
       if (sentence.toLowerCase().indexOf(Speachy.verbs[i]) !== -1) {
-        startVerbPos = i;
         constructResult.verb = Speachy.verbs[i];
+        break;
       }
     }
 
     for (var i = 0; i < Speachy.nouns.length; i++){
       if (sentence.toLowerCase().indexOf(Speachy.nouns[i]) !== -1) {
-        entityPos = i;
         constructResult.noun = Speachy.nouns[i];
+        break;
       }
     }
 
     for (var i = 0; i < Speachy.attributes.length; i++){
       if (sentence.toLowerCase().indexOf(Speachy.attributes[i].name) !== -1) {
-        attributePos = i;
         constructResult.attribute = Speachy.attributes[i];
       }
     }
 
-    if (startVerbPos == -1 || entityPos == -1) return { isConstructed: false };
+    if (!constructResult.verb || !constructResult.noun) return { isConstructed: false };
 
-    if (constructResult.attribute.type) {
+    if (constructResult.attribute && constructResult.attribute.type) {
       var regexNumbers = /\d+/;
       var foundAttributeValue = sentence.match(regexNumbers);
       console.log(foundAttributeValue);
@@ -154,6 +152,7 @@ var Speachy = (function Speachy(){
     }
 
     constructResult.isConstructed = true;
+    finalTranscript = '';
     return constructResult;
   }
 
