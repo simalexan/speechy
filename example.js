@@ -1,3 +1,5 @@
+var language = 'en-US';
+
 var verbs = [
   'open',
   'get',
@@ -23,4 +25,4 @@ Speechy.onConstructParsed = function (construct){
   console.log(construct);
 };
 
-Speechy.init(verbs, entities, attributes, cancelPhrase);
+Speechy.init(language, verbs, entities, attributes, cancelPhrase);

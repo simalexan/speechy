@@ -11,10 +11,11 @@ var Speechy = (function Speechy(){
   Speechy.verbs = [];
   Speechy.nouns = [];
   Speechy.attributes = [];
+  Speechy.language = 'en-US';
 
   Speechy.onConstructParsed;
 
-  Speechy.init = function (verbs, nouns, attributes, cancelPhrase){
+  Speechy.init = function (speechLanguage, verbs, nouns, attributes, cancelPhrase){
     if (!('webkitSpeechRecognition' in window)) {
       throw 'no speech recognition in this browser';
     } else {
@@ -31,6 +32,10 @@ var Speechy = (function Speechy(){
 
       if (typeof Speechy.onConstructParsed !== 'function') {
         throw 'You need to set a parsed speech handler function for Speechy to work';
+      }
+
+      if (speechLanguage && typeof speechLanguage === 'string' && speechLanguage.length == 5) {
+        Speechy.language = speechLanguage;
       }
 
       if (typeof cancelPhrase === 'string' && cancelPhrase.length > 2) Speechy.cancelPhrase = cancelPhrase;
@@ -120,7 +125,7 @@ var Speechy = (function Speechy(){
     }
     console.log('STARTING RECOGNITION')
     finalTranscript = '';
-    recognition.lang = 'en-US';
+    recognition.lang = Speechy.language;
     recognition.start();
     ignore_onend = false;
     start_timestamp = event.timeStamp;
