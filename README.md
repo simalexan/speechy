@@ -89,4 +89,4 @@ Double press S and voila!
 
 ### Supported languages
 
-[See supported languages](supported-languages.md)
+[See supported languages](supported-languages.json)
