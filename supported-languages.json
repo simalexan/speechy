@@ -16,26 +16,26 @@
     ]
   },
   {"Español": [
-      {"Argentina": "es-AR"},
-      {"Bolivia": "es-BO"},
-      {"Chile": "es-CL"},
-      {"Colombia": "es-CO"},
-      {"Costa Rica": "es-CR"},
-      {"Ecuador": "es-EC"},
-      {"El Salvador": "es-SV"},
-      {"España": "es-ES"},
-      {"Estados Unidos": "es-US"},
-      {"Guatemala": "es-GT"},
-      {"Honduras": "es-HN"},
-      {"México": "es-MX"},
-      {"Nicaragua": "es-NI"},
-      {"Panamá": "es-PA"},
-      {"Paraguay": "es-PY"},
-      {"Perú": "es-PE"},
-      {"Puerto Rico": "es-PR"},
+      {"Argentina":            "es-AR"},
+      {"Bolivia":              "es-BO"},
+      {"Chile":                "es-CL"},
+      {"Colombia":             "es-CO"},
+      {"Costa Rica":           "es-CR"},
+      {"Ecuador":              "es-EC"},
+      {"El Salvador":          "es-SV"},
+      {"España":               "es-ES"},
+      {"Estados Unidos":       "es-US"},
+      {"Guatemala":            "es-GT"},
+      {"Honduras":             "es-HN"},
+      {"México":               "es-MX"},
+      {"Nicaragua":            "es-NI"},
+      {"Panamá":               "es-PA"},
+      {"Paraguay":             "es-PY"},
+      {"Perú":                 "es-PE"},
+      {"Puerto Rico":          "es-PR"},
       {"República Dominicana": "es-DO"},
-      {"Uruguay": "es-UY"},
-      {"Venezuela": "es-VE"}
+      {"Uruguay":              "es-UY"},
+      {"Venezuela":            "es-VE"}
     ]
   },
   {"Euskara":         "eu-ES"},
@@ -45,8 +45,8 @@
   {"IsiZulu":         "zu-ZA"},
   {"Íslenska":        "is-IS"},
   {"Italiano": [
-      {"Italia": "it-IT"},
-      {"Svizzera": "it-CH"}
+      {"Italia":      "it-IT"},
+      {"Svizzera":    "it-CH"}
     ]
   },
   {"Magyar":          "hu-HU"},
@@ -54,8 +54,8 @@
   {"Norsk bokmål":    "nb-NO"},
   {"Polski":          "pl-PL"},
   {"Português": [
-      {"Brasil":    "pt-BR"},
-      {"Portugal":  "pt-PT"}
+      {"Brasil":      "pt-BR"},
+      {"Portugal":    "pt-PT"}
     ]
   },
   {"Română":          "ro-RO"},
