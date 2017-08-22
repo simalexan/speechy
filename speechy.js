@@ -96,7 +96,6 @@ var Speechy = (function Speechy(){
       recognition.onresult = function(event) {
         for (var i = event.resultIndex; i < event.results.length; ++i) {
           if (event.results[i].isFinal) {
-            console.log('final')
             finalTranscript += event.results[i][0].transcript;
             if (finalTranscript.indexOf(Speechy.cancelPhrase) != -1) {
               finalTranscript = '';
@@ -105,10 +104,16 @@ var Speechy = (function Speechy(){
               Speechy.onConstructParsed(parsedSpeech);
             }
           } else {
-            console.log('interim')
             interimTranscript += event.results[i][0].transcript;
             if (interimTranscript.indexOf(Speechy.cancelPhrase) != -1) {
               interimTranscript = '';
+            }else {
+              var parsedSpeech = parseConstruct(interimTranscript);
+              if (parsedSpeech.isConstructed && parsedSpeech.attribute &&
+                  (!parsedSpeech.attribute.type || (parsedSpeech.attribute.type && parsedSpeech.attribute.value))){
+                interimTranscript = '';
+              }
+              Speechy.onConstructParsed(parsedSpeech);
             }
           }
         }
@@ -159,7 +164,7 @@ var Speechy = (function Speechy(){
     if (constructResult.attribute && constructResult.attribute.type) {
       var regexNumbers = /\d+/;
       var foundAttributeValue = sentence.match(regexNumbers);
-      if (foundAttributeValue.length && foundAttributeValue.length > 0) constructResult.attribute.value = foundAttributeValue[0];
+      if (foundAttributeValue && foundAttributeValue.length && foundAttributeValue.length > 0) constructResult.attribute.value = foundAttributeValue[0];
     }
 
     constructResult.isConstructed = true;

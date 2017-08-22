@@ -1,12 +1,10 @@
 # Speechy
 
-What does Speechy mean? - https://www.youtube.com/watch?v=uo2wWB7cYk4
-
 _Speechy_ helps you connect your application entities and their pages to your users voice. It simplifies the recognition workflows, as it focuses you on basic sentence constructs - **verbs**, **nouns** and **attributes**. Using sentence constructs, you can easily lead the user to the wanted page, product or even product list without typing and clicking -- in Minority Report style.
 
 ### Important note!
 
-Speechy is a wrapper around Chrome's web speech API -- to ease up building speech recognition for your frontend app, thus it **only** works on Chrome.
+Speechy is a wrapper around Web speech API -- to ease up building speech recognition for your frontend app. Currently, the only browsers which have implemented that feature, are Chrome, along with its Chrome Mobile and Samsung.
 
 ## How does the user interact
 
