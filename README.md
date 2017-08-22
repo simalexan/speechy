@@ -12,9 +12,11 @@ Speechy is a wrapper around Chrome's web speech API -- to ease up building speec
 
 _Example request:_
 
-Double press the button **S** on your keyboard
+1. Double press the button **S** on your keyboard
+2. Say: 
 
 `Open a user with id 45`
+ 
 
 _Example response:_ 
 
@@ -31,9 +33,9 @@ _Example response:_
 }
 ```
 
-You can now lead the user to your frontend app - to page `/users/5`
+With this response, you can, for example, lead the user to your to page `/users/5`
 
-In case of a wrong pronunciation, you would just get
+In case of a wrong pronunciation or undetected verbs/nouns, you would just get
 ```javascript
 { 
   isConstructed: false
