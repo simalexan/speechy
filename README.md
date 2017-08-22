@@ -6,7 +6,7 @@ _Speechy_ helps you connect your application entities and their pages to your us
 
 Speechy is a wrapper around Web speech API -- to ease up building speech recognition for your frontend app. Currently, the only browsers which have implemented that feature, are Chrome, along with its Chrome Mobile and Samsung.
 
-## How does the user interact
+## How does it work
 
 _Example request:_
 
