@@ -1,7 +1,7 @@
 {
   "name": "speechy",
   "version": "1.3.0",
-  "description": "Easy web speech for your frontend application in Minority Report style",
+  "description": "Web speech recognition for your frontend application in Minority Report style",
   "main": "speechy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,9 @@
     "frontend",
     "crud",
     "web",
-    "speech"
+    "speech",
+    "api",
+    "actions"
   ],
   "author": "Alexander Simovic <alexander.simovic@gmail.com>",
   "license": "MIT",
