@@ -98,7 +98,7 @@ var Speechy = (function Speechy(){
           if (event.results[i].isFinal) {
             finalTranscript += event.results[i][0].transcript;
             if (finalTranscript.indexOf(Speechy.cancelPhrase) != -1) {
-              finalTranscript = '';
+              Speechy.clearTranscripts()
             } else {
               var parsedSpeech = parseConstruct(finalTranscript);
               Speechy.onConstructParsed(parsedSpeech);
@@ -106,12 +106,12 @@ var Speechy = (function Speechy(){
           } else {
             interimTranscript += event.results[i][0].transcript;
             if (interimTranscript.indexOf(Speechy.cancelPhrase) != -1) {
-              interimTranscript = '';
+              Speechy.clearTranscripts()
             }else {
               var parsedSpeech = parseConstruct(interimTranscript);
               if (parsedSpeech.isConstructed && parsedSpeech.attribute &&
                   (!parsedSpeech.attribute.type || (parsedSpeech.attribute.type && parsedSpeech.attribute.value))){
-                interimTranscript = '';
+                Speechy.clearTranscripts()
               }
               Speechy.onConstructParsed(parsedSpeech);
             }
@@ -121,11 +121,17 @@ var Speechy = (function Speechy(){
     }
   };
 
+  Speechy.clearTranscripts = function (){
+    interimTranscript = '';
+    finalTranscript = '';
+  };
+
   Speechy.startRecognizing = function (event){
     if (recognizing) {
       console.log('SHUTTING RECOGNITION')
       recognition.stop();
       hasButtonTappedOnce = false;
+      recognizing = true;
       return;
     }
     console.log('STARTING RECOGNITION')
